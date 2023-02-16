@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-project
+  labels:
+    app: devops-project
+    tier: devops-project
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-project
+      tier: devops-project
+  template:
+    metadata:
+      labels:
+        app: devops-project
+        tier: devops-project
+    spec:
+      containers:
+        - name: {{ .Values.name }}
+          image: {{ .Values.image }}
+          ports:
+              - containerPort: {{ .Values.port }}
+          env:
+            - name: MONGODB_USER
+              value: admin
+            - name: MONGODB_PASSWORD
+              value: admin
+            - name: MONGODB_HOST
+              value: mongo-service
+      restartPolicy: {{ .Values.restartPolicy }}

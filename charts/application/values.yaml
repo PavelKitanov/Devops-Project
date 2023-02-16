@@ -1,0 +1,5 @@
+name: devops-project
+image: pavelkitanov/devops-project
+tag: latest
+restartPolicy: Always
+port: 8080
