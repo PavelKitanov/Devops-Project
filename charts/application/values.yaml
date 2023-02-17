@@ -1,4 +1,4 @@
-name: devops-project
+name: application
 image: pavelkitanov/application
 tag: latest
 restartPolicy: Always

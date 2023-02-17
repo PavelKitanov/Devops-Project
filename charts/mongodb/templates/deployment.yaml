@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: application-deployment
+  name: mongodb-deployment
   labels:
-    app: application
-    tier: application
+    app: mongodb
+    tier: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: application
-      tier: application
+      app: mongodb
+      tier: mongodb
   template:
     metadata:
       labels:
-        app: application
-        tier: application
+        app: mongodb
+        tier: mongodb
     spec:
       containers:
         - name: {{ .Values.name }}
-          image: {{ .Values.image }}
+          image: {{ .Values.image }}:{{ .Values.tag }}
           ports:
-              - containerPort: {{ .Values.port }}
+            - containerPort: {{ .Values.port }}
           env:
-            - name: MONGODB_USER
+            - name: MONGO_INITDB_ROOT_USERNAME
               value: admin
-            - name: MONGODB_PASSWORD
+            - name: MONGO_INITDB_ROOT_PASSWORD
               value: admin
       restartPolicy: {{ .Values.restartPolicy }}

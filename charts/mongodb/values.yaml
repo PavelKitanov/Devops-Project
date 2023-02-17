@@ -1,0 +1,5 @@
+name: mongodb
+image: pavelkitanov/mongodb
+tag: latest
+restartPolicy: Always
+port: 27017
