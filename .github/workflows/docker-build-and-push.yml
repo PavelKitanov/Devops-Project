@@ -52,4 +52,3 @@ jobs:
                 cd charts
                 helm upgrade --install my-mongodb mongodb
                 helm upgrade --install my-application application
-                kubectl rollout restart deployment application-deployment
