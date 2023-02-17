@@ -36,5 +36,19 @@ jobs:
         - name: Docker push image for application
           run: |
             docker push pavelkitanov/application
-        
- 
+            
+            
+    deploy:
+        needs: build
+        runs-on:
+            - label-1
+        steps:
+            - uses: actions/checkout@v2
+            - name: Run scripts
+              run: |
+                cd ../devops-project
+                git pull
+                cd charts
+                helm upgrade --install my-mongodb mongodb
+                helm upgrade --install my-application application
+                kubectl rollout restart deployment application-deployment
