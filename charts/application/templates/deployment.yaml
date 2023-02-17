@@ -22,11 +22,4 @@ spec:
           image: {{ .Values.image }}
           ports:
               - containerPort: {{ .Values.port }}
-          env:
-            - name: MONGODB_USER
-              value: admin
-            - name: MONGODB_PASSWORD
-              value: admin
-            - name: MONGODB_HOST
-              value: mongo-service
       restartPolicy: {{ .Values.restartPolicy }}
